@@ -8,7 +8,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import VueRx from 'vue-rx'
 import VuejsClipper from "vuejs-clipper/dist/vuejs-clipper.umd.min";
 import "vuejs-clipper/dist/vuejs-clipper.css";
+import VueCompositionAPI from '@vue/composition-api'
 
+Vue.use(VueCompositionAPI)
 Vue.use(VueRx);
 Vue.use(VuejsClipper, {
   components: {

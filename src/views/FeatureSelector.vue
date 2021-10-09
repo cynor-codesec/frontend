@@ -55,7 +55,7 @@ import Progress from "@/components/Progress";
 import Loading from "@/components/Loading";
 import jd from "@/assets/jd.png";
 export default {
-  name: "Home",
+  name: "FeatureSelector",
   components: {
     Progress,
     Loading
