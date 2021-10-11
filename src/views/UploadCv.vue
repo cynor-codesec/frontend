@@ -5,7 +5,7 @@
         <h1 class="mt-4">Cynor</h1>
       </b-col>
     </b-row>
-    <Progress step="1" />
+    <Progress step="3" />
     <b-row v-if="!loading">
       <div v-if="!uploaded" id="upload">
         <input id="file" type="file" @change="onFileChange" />
@@ -37,6 +37,7 @@
 import Progress from "@/components/Progress";
 import Loading from "@/components/Loading";
 import Banner from "@/assets/banner-2.png";
+import axios from "axios";
 export default {
   name: "UploadCv",
   components: {
@@ -63,9 +64,25 @@ export default {
     upload(){
         this.loading=true;
         let formData = new FormData();
+        let self = this;
         formData.append('file', this.file);
         console.log(this.file);
         console.log(formData.has("file"))
+        axios({
+        method: "post",
+        url: "https://api-cynor.syncfire.com.au/send-cvs?id="+this.$route.params.id,
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+        .then(function (response) {
+          console.log(response);
+          self.$router.push("/report/"+self.$route.params.id);
+        })
+        .catch(function (response) {
+          self.loading=false;
+          self.cancel();
+          console.log(response);
+        });
     },
     cancel() {
       this.fileName ='';

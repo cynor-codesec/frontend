@@ -4,6 +4,8 @@ import Home from "../views/Home.vue";
 import FeatureSelector from "../views/FeatureSelector.vue"
 import FeatureStore from "../views/FeatureStore.vue"
 import UploadCv from "../views/UploadCv.vue"
+import Report from "../views/Report.vue"
+import ReportIndividual from "../views/ReportIndividual.vue"
 
 Vue.use(VueRouter);
 
@@ -27,6 +29,16 @@ const routes = [
     path: '/upload-cv/:id',
     name: "UploadCv",
     component: UploadCv
+  },
+  {
+    path: '/report/:id',
+    name: "Report",
+    component: Report
+  },
+  {
+    path: '/report/:id/:cid',
+    name: "ReportIndividual",
+    component: ReportIndividual
   }
 ];
 

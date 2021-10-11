@@ -17,7 +17,8 @@
         <b-card :img-src="banner" img-alt="Card image" img-start>
           <b-card-text>
             {{ fileName }}
-            <b-icon @click="cancel"
+            <b-icon
+              @click="cancel"
               id="close"
               font-scale="1.4"
               style="float: right; margin-top: 0.7px"
@@ -36,7 +37,7 @@
 import Progress from "@/components/Progress";
 import Loading from "@/components/Loading";
 import Banner from "@/assets/banner.png";
-
+import axios from "axios";
 export default {
   name: "Home",
   components: {
@@ -61,17 +62,33 @@ export default {
       this.uploaded = true;
     },
     upload() {
+      let self = this;
       this.loading = true;
       let formData = new FormData();
       formData.append("file", this.file);
       console.log(this.file);
       console.log(formData.has("file"));
+      axios({
+        method: "post",
+        url: "https://api-cynor.syncfire.com.au/send-jd",
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+        .then(function (response) {
+          self.loading=false;
+          self.$router.push("/feature-selector/"+response.data._id);
+        })
+        .catch(function (response) {
+          self.loading=false;
+          self.cancel();
+          console.log(response);
+        });
     },
     cancel() {
-      this.fileName ='';
-      this.file='';
+      this.fileName = "";
+      this.file = "";
       this.uploaded = false;
-    }
+    },
   },
 };
 </script>
