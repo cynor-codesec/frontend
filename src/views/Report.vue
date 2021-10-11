@@ -11,7 +11,7 @@
         <div id="heading">
           <h2>Report</h2>
           <div>
-            <b-button variant="primary" id="search-btn">
+            <b-button @click="$router.push('/search/'+$route.params.id)" variant="primary" id="search-btn">
               <b-icon
                 font-scale="1.4"
                 style="float: right; margin-top: 0.7px"
@@ -62,15 +62,17 @@
         <b-row class="box">
           <h2 class="mt-3">Stats</h2>
           <div v-if="!statLoading" style="textAlign: left" class="mt-3">
-            <h4>Total Candidates: <span class="highlight">{{stats.total}}</span></h4>
-            <h4 class="mt-3">Mean Score: <span class="highlight">{{stats.mean}}</span></h4>
+            <h4>Total Candidates: <span class="highlight">{{Math.round((stats.total+ Number.EPSILON) * 100) / 100}}</span></h4>
+            <h4 class="mt-3">Mean Score: <span class="highlight">{{Math.round((stats.mean+ Number.EPSILON) * 100) / 100}}</span></h4>
             <h4 class="mt-3">
-              Median Score: <span class="highlight">{{stats.median}}</span>
+              Median Score: <span class="highlight">
+                {{Math.round((stats.median+ Number.EPSILON) * 100) / 100}}
+                </span>
             </h4>
             <br />
-            <h5><span style="color:green;">Good</span> Candidates: <span class="highlight">{{stats.good_per * 100}}%</span></h5>
+            <h5><span style="color:green;">Good</span> Candidates: <span class="highlight">{{Math.round(stats.good_per * 100)}}%</span></h5>
             <h5 class="mt-3">
-              <span style="color:red;">Bad</span>  Candidates: <span class="highlight">{{stats.bad_per * 100}}%</span>
+              <span style="color:red;">Bad</span>  Candidates: <span class="highlight">{{Math.round(stats.bad_per * 100)}}%</span>
             </h5>
           </div>
           <div v-if="statLoading"  style="textAlign:center;" class="mb-5">
@@ -94,7 +96,7 @@
     <div v-if="loading && processed" id="loadin" class="box p-4" style="marginTop:20vh">  
       <h3 style="marginTop:0;">Percentage of CVs processed:</h3>
       <b-progress :value="processed_cvs" :max="total_cv" show-progress animated></b-progress>
-      <h4 class="mt-2" style="marginBottom:0;">ETA: {{Math.round(remaining_cvs*1.6)}} minutes</h4>
+      <h4 class="mt-2" style="marginBottom:0;">ETA: {{Math.round(remaining_cvs*0.40)}} minutes</h4>
     </div>
   </b-container>
 </template>

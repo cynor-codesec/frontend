@@ -6,6 +6,7 @@ import FeatureStore from "../views/FeatureStore.vue"
 import UploadCv from "../views/UploadCv.vue"
 import Report from "../views/Report.vue"
 import ReportIndividual from "../views/ReportIndividual.vue"
+import Search from "../views/Search.vue"
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/report/:id/:cid',
     name: "ReportIndividual",
     component: ReportIndividual
+  },
+  {
+    path: '/search/:id',
+    name: "Search",
+    component: Search
   }
 ];
 

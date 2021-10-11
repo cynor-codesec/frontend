@@ -11,6 +11,7 @@
         <input id="file" type="file" @change="onFileChange" />
         <img src="@/assets/upload.png" alt="upload icon" />
         <h2 class="pt-3">Upload JD</h2>
+        <p style="width:50%;margin: 0 auto;">Right now cynor accepts <strong>only pdf</strong> since our servers are linux based but once we switch to <strong>windows server</strong> then docx will work.</p>
       </div>
       <div v-if="uploaded" id="confirm">
         <h1>Confirm session start with file:</h1>
