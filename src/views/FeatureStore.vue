@@ -13,7 +13,7 @@
         <b-col>
           <h4>Company</h4>
           <div class="box">
-            <input type="text" :value="feature_store.company_name.text" />
+            <input type="text" v-model="feature_store.company_name.text" />
             <b-row class="weight align-items-md-center">
               <b-col md="10">
                 <Slider
@@ -36,7 +36,7 @@
         <b-col>
           <h4>Designation</h4>
           <div class="box">
-            <input type="text" :value="feature_store.designation.text" />
+            <input type="text" v-model="feature_store.designation.text" />
             <b-row class="weight align-items-md-center">
               <b-col md="10">
                 <Slider
