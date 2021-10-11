@@ -94,7 +94,7 @@
     <div v-if="loading && processed" id="loadin" class="box p-4" style="marginTop:20vh">  
       <h3 style="marginTop:0;">Percentage of CVs processed:</h3>
       <b-progress :value="processed_cvs" :max="total_cv" show-progress animated></b-progress>
-      <h4 class="mt-2" style="marginBottom:0;">ETA: {{remaining_cvs*1.6}} minutes</h4>
+      <h4 class="mt-2" style="marginBottom:0;">ETA: {{Math.round(remaining_cvs*1.6)}} minutes</h4>
     </div>
   </b-container>
 </template>
