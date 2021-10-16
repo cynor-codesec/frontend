@@ -9,6 +9,8 @@
     <b-row class="justify-content-md-center" v-if="!loading">
       <br />
       <h2>Feature Store</h2>
+      <!-- <br /> -->
+      <b-button @click="activatePro" :variant="reqExpand ? 'primary':'outline-primary'">{{ reqExpand ? "Disable":"Activate" }} Pro Mode</b-button>
       <b-row id="general" style="marginTop: 20px">
         <b-col>
           <h4>Company</h4>
@@ -83,9 +85,18 @@
       </b-row>
 
       <b-row id="requirements" style="marginTop: 35px" class="box-2">
-        <h4>Requirements</h4>
-        <b-row >
-          <b-col md="3" v-for="key in Object.keys(feature_store.requirements)" :key="key">
+        <div class="sub-head">
+          <h4>Requirements</h4>
+          <b-button style="width:5%;margin:0;" variant="outline-primary">
+            <b-icon
+                  font-scale="1.4"
+           
+                  icon="plus-circle"
+              ></b-icon>
+          </b-button>
+        </div>
+        <b-row>
+          <b-col :class="{requi: !reqExpand}" md="3" v-for="key in Object.keys(feature_store.requirements)" :key="key">
             <div class="box mt-3">
               <EntityVisualizer 
                 :text="feature_store.requirements[key].line"
@@ -108,12 +119,22 @@
             </div>
           </b-col>
         </b-row>
+        
       </b-row>
 
         <b-row id="responsibilities" style="marginTop: 35px; marginBottom: 10px" class="box-2">
-        <h4>Responsibilities</h4>
+        <div class="sub-head">
+          <h4>Responsibilities</h4>
+          <b-button style="width:5%;margin:0;" variant="outline-primary">
+            <b-icon
+                  font-scale="1.4"
+           
+                  icon="plus-circle"
+              ></b-icon>
+          </b-button>
+        </div>
         <b-row>
-          <b-col md="3" v-for="key in Object.keys(feature_store.responsibilities)" :key="key">
+          <b-col :class="{respi: !respExpand}" md="3" v-for="key in Object.keys(feature_store.responsibilities)" :key="key">
             <div class="box mt-3">
               <span>{{feature_store.responsibilities[key].line}}</span>
               <b-row class="weight align-items-md-center">
@@ -159,7 +180,141 @@ export default {
   data() {
     return {
       loading: false,
-      feature_store: {},
+      reqExpand: false,
+      respExpand: false,
+      feature_store: {
+        company_name: {
+          end: 16,
+          line: "Axon digital pvt. Itd. Web Backend Developer",
+          line_ix: 0,
+          start: 5,
+          text: "Axon digital pvt",
+          weight: 1,
+        },
+        designation: {
+          end: 10,
+          line: "Axon digital pvt. Itd. Web Backend Developer",
+          line_ix: 0,
+          start: 8,
+          text: "Backend Developer",
+          weight: 1,
+        },
+        location: {
+          end: 21,
+          line: "Location: Maharashtra, India",
+          line_ix: 1,
+          start: 10,
+          text: "Maharashtra",
+          weight: 1,
+        },
+        requirements: {
+          skill0: {
+            end: [3, 5, 7],
+            line: "Bachelor's degree in CSE or MCA",
+            line_ix: 0,
+            start: [0, 4, 6],
+            text: [
+              ["Bachelor's degree", "compoundKw"],
+              ["CSE", "genKw"],
+              ["MCA", "genKw"],
+            ],
+            weight: 1,
+          },
+          skill1: {
+            end: [7, 9],
+            line: "At Least 3 to 5 years experience in NodeJs.",
+            line_ix: 1,
+            start: [2, 8],
+            text: [
+              ["3 to 5 years experience", "rangeExp"],
+              ["NodeJs", "genKw"],
+            ],
+            weight: 1,
+          },
+          skill2: {
+            end: [5, 7],
+            line: "At Least 2 years experience in expressJs.",
+            line_ix: 2,
+            start: [0, 6],
+            text: [
+              ["At Least 2 years experience", "minExp"],
+              ["expressJs", "genKw"],
+            ],
+            weight: 1,
+          },
+          skill3: {
+            end: [7],
+            line: "Must know to write tests in Mocha:",
+            line_ix: 3,
+            start: [6],
+            text: [["Mocha", "genKw"]],
+            weight: 1,
+          },
+          skill4: {
+            end: [4, 8],
+            line: "Must have good communication skills and experience working in teams",
+            line_ix: 4,
+            start: [2, 6],
+            text: [
+              ["good communication", "compoundKw"],
+              ["experience working", "compoundKw"],
+            ],
+            weight: 1,
+          },
+          skill5: {
+            end: [3],
+            line: "have relevant skills and interests:",
+            line_ix: 5,
+            start: [1],
+            text: [["relevant skills", "compoundKw"]],
+            weight: 1,
+          },
+        },
+        responsibilities: {
+          repsonsibility0: {
+            line: "Building backend modules for several backend projects.",
+            line_ix: 0,
+            text: "Building backend modules for several backend projects.",
+            weight: 1,
+          },
+          repsonsibility1: {
+            line: "Maintain high coding standards and practices to deliver secure , scalable, optimized, and",
+            line_ix: 1,
+            text: "Maintain high coding standards and practices to deliver secure , scalable, optimized, and",
+            weight: 1,
+          },
+          repsonsibility2: {
+            line: "exceptional WordPress products from start to finish. Always do extensive research to",
+            line_ix: 2,
+            text: "exceptional WordPress products from start to finish. Always do extensive research to",
+            weight: 1,
+          },
+          repsonsibility3: {
+            line: "build innovative solutions with a perfect user experience. Write test cases for all the",
+            line_ix: 3,
+            text: "build innovative solutions with a perfect user experience. Write test cases for all the",
+            weight: 1,
+          },
+          repsonsibility4: {
+            line: "code you develop. Planning and issue management via Jira. Respect timelines and",
+            line_ix: 4,
+            text: "code you develop. Planning and issue management via Jira. Respect timelines and",
+            weight: 1,
+          },
+          repsonsibility5: {
+            line: "communicate progress proactively: We are a remote team, so proactive communication",
+            line_ix: 5,
+            text: "communicate progress proactively: We are a remote team, so proactive communication",
+            weight: 1,
+          },
+          repsonsibility6: {
+            line: "is essential.",
+            line_ix: 6,
+            text: "is essential.",
+            weight: 1,
+          },
+        },
+      },
       interval: ""
     };
   },
@@ -201,6 +356,10 @@ export default {
           self.loading=false;
           console.log(response);
         });
+    },
+    activatePro() {
+      this.respExpand = !this.respExpand;
+      this.reqExpand = !this.reqExpand;
     }
   },
   mounted() {
@@ -259,5 +418,17 @@ input {
 }
 .faded{
   color: #575656;
+}
+.requi:nth-child(n+5) {
+  display: none;
+}
+.respi:nth-child(n+5) {
+  display: none;
+}
+.sub-head{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 35px;
+  align-items: center;
 }
 </style>
