@@ -3,19 +3,19 @@
 
 Cynor helps companies automate their cv screening process by uploading a **job description** and the **corresponding CVs of all the applicants**. After processing the data, Cynor will produce a ranked list of candidates and explain why the person received a certain rank.
 
-[DEMO](https://imgur.com/3owZVue.png)
+[DEMO VIDEO](https://imgur.com/3owZVue.png)
 
 ## Frontend UI Experience
 - Step 1: Upload the Job Description
-![s1](https://imgur.com/SYya5Fk.png)
+![s1](https://imgur.com/Iv8gfaw.png)
 - Step 2: Tag the requirements & responsibilities
-![s2](https://imgur.com/3owZVue.png)
+![s2](https://imgur.com/hdkwyw1.png)
 - Step 3: Modify the feature store
-![s3](https://imgur.com/hwnfMtH.png)
+![s3](https://imgur.com/XDG76m0.png)
 - Step 4: Upload CVs
-![s4](https://imgur.com/U3dCTZt.png)
+![s4](https://imgur.com/KljSB6s.png)
 - Step 5: Results!
-![s5](https://imgur.com/pa8Np7E.png)
+![s5](https://imgur.com/vvfhdFX.png)
 
 
 ## Under The Hood
